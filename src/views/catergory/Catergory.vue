@@ -1,27 +1,155 @@
 <template>
-  <div>
-    <div style="width: 100%;height:500px"></div>
-    <tab-control class="home-tab-control" :titles="['流行','新款','精选']"></tab-control>
-    <div style="width: 100%;height:1500px"></div>
+  <div class="wrapper" ref="wrapper">
+    <ul class="content">
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+      <li>商品列表</li>
+    </ul>
   </div>
 </template>
 
 <script>
-import TabControl from "../../components/content/tabControl/TabControl.vue";
+import BScroll from '@better-scroll/core'
+import PullUp from '@better-scroll/pull-up'
+import PullDown from '@better-scroll/pull-down'
+
+BScroll.use(PullUp)
+BScroll.use(PullDown)
+
 export default {
   name: "Catergory",
   data() {
-    return {};
+    return {
+      scroll: null
+    };
   },
   components: {
-    TabControl,
+
   },
+  mounted() {
+    this.scroll = new BScroll(this.$refs.wrapper, {
+      probeType: 3,
+      click: true,
+      pullUpLoad: {
+        threshold: 50
+      }
+    });
+    this.scroll.on('scroll', position => {
+      // console.log(position);
+    });
+    this.scroll.on("pullingUp", () => {
+      console.log('上拉加载更多');
+      // 发送网络请求，请求更多页数据
+
+      setTimeout(() => {
+        this.scroll.finishPullUp()
+      }, 1000)
+    })
+  }
 };
 </script>
 
 <style scoped>
-.tab-control {
-  position: sticky;
-  top: 44px;
+.wrapper {
+  background-color: red;
+  height: 150px;
+  /* overflow: auto; */
 }
 </style>

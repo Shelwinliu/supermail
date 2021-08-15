@@ -13,4 +13,8 @@ module.exports = {
       // .set("base", resolve("baseConfig"))
       // .set("public", resolve("public"));
   },
+  devServer: {
+	  host: '0.0.0.0',
+	  port: 8080,
+	 }
 }

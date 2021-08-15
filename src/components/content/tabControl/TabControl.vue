@@ -25,6 +25,8 @@
    methods: {
      tabItemClick(index) {
        this.currentIndex = index
+       // 将所点击的 index 传给整个 home 页面（子传父）进行商品的切换
+       this.$emit('tabClick', index)
      }
    },
    components: {
